@@ -5,10 +5,27 @@
   --ink: #16150F;
   --muted: #6E6A5E;
   --line: #D9D4C7;
-  --accent: #FF4A1C;
+  --accent: #2563EB;
   --accent-ink: #FFFFFF;
-  --bg-blur: rgba(238, 234, 225, 0.84);
+  --bg-blur: rgba(238, 234, 225, 0.86);
   --backdrop: rgba(22, 21, 15, 0.36);
+
+  /* Japanese Landscape Footer Tokens (Daylight) */
+  --land-sky: #EAE4D7;
+  --land-celestial: #FAF5E8;
+  --land-celestial-glow: rgba(250, 245, 232, 0.45);
+  --land-hill-far: #D6D2C4;
+  --land-hill-near: #BCC2B0;
+  --land-castle: #B0AA99;
+  --land-tree: #5F7A58;
+  --land-grass: #7D9B76;
+  --land-grass-deep: #62805C;
+  --land-path: #D6CEBC;
+  --land-rock: #A69F8E;
+  --land-sign-bg: #EAE2D0;
+  --land-sign-border: #A69A82;
+  --land-sign-post: #8C7B65;
+  --land-lantern: rgba(217, 119, 6, 0.18);
 
   /* Typography */
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -17,8 +34,8 @@
   --font-prose: Georgia, "Times New Roman", serif;
 
   /* Fluid Type Scale */
-  --text-hero: clamp(2.8rem, 7.5vw, 6rem);
-  --text-section: clamp(2.5rem, 4.2vw, 4rem);
+  --text-hero: clamp(2.8rem, 6.8vw, 5.5rem);
+  --text-section: clamp(2.25rem, 4vw, 3.6rem);
   --text-body: 1rem;
   --text-mono: 0.78rem;
 
@@ -54,8 +71,25 @@
   --ink: #ECE8DD;
   --muted: #8C887B;
   --line: #252622;
-  --accent: #FF6A3D;
+  --accent: #60A5FA;
   --accent-ink: #0C0D0C;
-  --bg-blur: rgba(12, 13, 12, 0.84);
-  --backdrop: rgba(0, 0, 0, 0.58);
+  --bg-blur: rgba(12, 13, 12, 0.86);
+  --backdrop: rgba(0, 0, 0, 0.6);
+
+  /* Japanese Landscape Footer Tokens (Night) */
+  --land-sky: #0F1110;
+  --land-celestial: #ECE8DD;
+  --land-celestial-glow: rgba(236, 232, 221, 0.12);
+  --land-hill-far: #171A18;
+  --land-hill-near: #1D2621;
+  --land-castle: #222623;
+  --land-tree: #1E3829;
+  --land-grass: #1C3D2D;
+  --land-grass-deep: #132B20;
+  --land-path: #1E201D;
+  --land-rock: #2D302B;
+  --land-sign-bg: #1B1D19;
+  --land-sign-border: #3E4239;
+  --land-sign-post: #4A443A;
+  --land-lantern: rgba(245, 158, 11, 0.25);
 }

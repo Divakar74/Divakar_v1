@@ -5,46 +5,10 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
-function renderProseOrTodo(text) {
-  const val = String(text || '').trim();
-  if (!val || val.startsWith('TODO:')) {
-    return `<p class="case-todo">${escapeHtml(val || 'TODO: add section notes')}</p>`;
+export function initRouter({ backdrop, panel, bodyEl, topbarLabelEl, closeBtn, projects, art }) {
+  if (!backdrop || !panel || !bodyEl) {
+    return { openProject: () => {}, openArtCollection: () => {} };
   }
-  return `<p class="case-prose">${escapeHtml(val)}</p>`;
-}
-
-function renderArchitectureSvg(project) {
-  const concepts = project.concepts || [];
-  const width = 560;
-  const height = Math.max(160, concepts.length * 36 + 24);
-  const rootX = 115;
-  const rootY = height / 2;
-  const targetX = 410;
-
-  const lines = concepts
-    .map((c, idx) => {
-      const y = ((idx + 1) / (concepts.length + 1)) * height;
-      return `
-        <line x1="${rootX}" y1="${rootY}" x2="${targetX}" y2="${y}" stroke="var(--line)" stroke-width="1.2" />
-        <circle cx="${targetX}" cy="${y}" r="4.5" fill="var(--muted)" />
-        <text x="${targetX + 12}" y="${y + 4}" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">${escapeHtml(c.toLowerCase())}</text>
-      `;
-    })
-    .join('');
-
-  return `
-    <div class="case-arch-diagram" aria-label="Architecture node diagram for ${escapeHtml(project.title)}">
-      <svg viewBox="0 0 ${width} ${height}" role="img">
-        ${lines}
-        <circle cx="${rootX}" cy="${rootY}" r="9" fill="var(--accent)" />
-        <text x="${rootX}" y="${rootY + 24}" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">${escapeHtml(project.id)}</text>
-      </svg>
-    </div>
-  `;
-}
-
-export function initRouter({ backdrop, panel, bodyEl, closeBtn, projects }) {
-  if (!backdrop || !panel || !bodyEl) return { openProject: () => {} };
 
   const projectMap = new Map(projects.map((p) => [p.id, p]));
   let lastTrigger = null;
@@ -60,7 +24,7 @@ export function initRouter({ backdrop, panel, bodyEl, closeBtn, projects }) {
     backdrop.hidden = true;
     document.body.style.overflow = '';
 
-    if (updateHash && window.location.hash.startsWith('#/work/')) {
+    if (updateHash && (window.location.hash.startsWith('#/work/') || window.location.hash === '#/art')) {
       history.pushState(null, '', window.location.pathname + window.location.search);
     }
 
@@ -71,22 +35,30 @@ export function initRouter({ backdrop, panel, bodyEl, closeBtn, projects }) {
   }
 
   function renderProject(project) {
+    if (topbarLabelEl) topbarLabelEl.textContent = 'case file';
     const cf = project.caseFile || {};
     const stack = (project.tags || []).join(' · ').toLowerCase();
+    const outputs = Array.isArray(project.outputImages) && project.outputImages.length
+      ? `
+        <div class="case-section">
+          <h3 class="case-section-label">05 / output</h3>
+          <div class="case-output-grid">
+            ${project.outputImages
+              .map(
+                (src) =>
+                  `<img class="case-output-img" src="${escapeHtml(src)}" alt="${escapeHtml(project.title)} output" loading="lazy" />`
+              )
+              .join('')}
+          </div>
+        </div>
+      `
+      : '';
 
     bodyEl.innerHTML = `
       <div class="case-meta">
         <div>
           <span class="case-meta-label">year</span>
           <span class="case-meta-val">${escapeHtml(project.year)}</span>
-        </div>
-        <div>
-          <span class="case-meta-label">role</span>
-          <span class="case-meta-val">${escapeHtml(project.role)}</span>
-        </div>
-        <div>
-          <span class="case-meta-label">status</span>
-          <span class="case-meta-val">${escapeHtml(project.status)}</span>
         </div>
         <div>
           <span class="case-meta-label">source</span>
@@ -99,24 +71,48 @@ export function initRouter({ backdrop, panel, bodyEl, closeBtn, projects }) {
 
       <div class="case-section">
         <h3 class="case-section-label">01 / problem</h3>
-        ${renderProseOrTodo(cf.problem)}
+        <p class="case-prose">${escapeHtml(cf.problem)}</p>
       </div>
 
       <div class="case-section">
         <h3 class="case-section-label">02 / approach</h3>
-        ${renderProseOrTodo(cf.approach)}
+        <p class="case-prose">${escapeHtml(cf.approach)}</p>
       </div>
 
       <div class="case-section">
         <h3 class="case-section-label">03 / architecture</h3>
-        ${renderProseOrTodo(cf.architecture)}
-        ${renderArchitectureSvg(project)}
+        <p class="case-prose">${escapeHtml(cf.architecture)}</p>
       </div>
 
       <div class="case-section">
         <h3 class="case-section-label">04 / what i learned</h3>
-        ${renderProseOrTodo(cf.learned)}
+        <p class="case-prose">${escapeHtml(cf.learned)}</p>
       </div>
+
+      ${outputs}
+    `;
+  }
+
+  function renderArtCollection() {
+    if (topbarLabelEl) topbarLabelEl.textContent = 'art collection';
+    const cards = (art || [])
+      .map(
+        (item) => `
+        <figure class="art-card">
+          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.title)}" />
+          <figcaption class="art-card-caption">
+            <span class="art-card-title">${escapeHtml(item.title)}</span>
+            <span class="mono">${escapeHtml(item.medium)}</span>
+          </figcaption>
+        </figure>
+      `
+      )
+      .join('');
+
+    bodyEl.innerHTML = `
+      <h2 id="case-title" class="case-title">sketchbook &amp; <span class="serif-italic">drawings</span></h2>
+      <p class="mono" style="margin-bottom: 24px;">pencil, ink, and watercolor studies.</p>
+      <div class="art-gallery-grid">${cards}</div>
     `;
   }
 
@@ -136,8 +132,28 @@ export function initRouter({ backdrop, panel, bodyEl, closeBtn, projects }) {
     if (closeBtn) closeBtn.focus();
   }
 
+  function openArtCollection(triggerEl) {
+    lastTrigger = triggerEl || document.activeElement;
+    renderArtCollection();
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+
+    if (window.location.hash !== '#/art') {
+      window.location.hash = '#/art';
+    }
+
+    if (closeBtn) closeBtn.focus();
+  }
+
   function syncFromHash() {
     const hash = window.location.hash;
+    if (hash === '#/art') {
+      renderArtCollection();
+      backdrop.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+      return;
+    }
     if (hash.startsWith('#/work/')) {
       const id = decodeURIComponent(hash.slice('#/work/'.length));
       if (projectMap.has(id)) {
@@ -184,5 +200,5 @@ export function initRouter({ backdrop, panel, bodyEl, closeBtn, projects }) {
   window.addEventListener('hashchange', syncFromHash);
   syncFromHash();
 
-  return { openProject };
+  return { openProject, openArtCollection };
 }

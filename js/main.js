@@ -1,29 +1,12 @@
 import { initTheme } from './theme.js';
-import { initGraph } from './graph.js';
-import { initSearch } from './search.js';
 import { initRouter } from './router.js';
+import { initSamurai } from './samurai.js';
 
 function escapeHtml(str) {
   return String(str || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
-}
-
-function startChennaiClock(el, timeZone) {
-  if (!el) return;
-  const fmt = new Intl.DateTimeFormat('en-IN', {
-    timeZone: timeZone || 'Asia/Kolkata',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  });
-  const update = () => {
-    el.textContent = `chennai ${fmt.format(new Date())} ist`;
-  };
-  update();
-  setInterval(update, 1000);
 }
 
 function initReveals() {
@@ -83,34 +66,41 @@ function initNavAndMenus() {
   });
 }
 
-function initEasterEggs() {
-  const gridOverlay = document.getElementById('grid-overlay');
-  let buffer = '';
+function renderProjectsTable(indexEl, projects, onOpen) {
+  if (!indexEl) return;
 
-  document.addEventListener('keydown', (e) => {
-    const tag = (document.activeElement?.tagName || '').toLowerCase();
-    if (tag === 'input' || tag === 'textarea' || e.metaKey || e.ctrlKey || e.altKey) {
-      return;
-    }
+  indexEl.innerHTML = projects
+    .map((p) => {
+      const tags = (p.tags || [])
+        .map((t) => `<span class="tag">${escapeHtml(t.toLowerCase())}</span>`)
+        .join('');
+      return `
+        <article class="index-row" tabindex="0" role="button" data-project-id="${escapeHtml(p.id)}" aria-label="Open case file for ${escapeHtml(p.title)}">
+          <span class="index-num">${escapeHtml(p.index)}</span>
+          <h3 class="index-title">${escapeHtml(p.title)}</h3>
+          <div class="index-tags">${tags}</div>
+          <span class="index-year">${escapeHtml(p.year)}</span>
+          <p class="index-preview">${escapeHtml(p.summary)}</p>
+        </article>
+      `;
+    })
+    .join('');
 
-    if (e.key === 'g' && gridOverlay) {
-      gridOverlay.classList.toggle('is-active');
-    }
-
-    if (/^[a-z]$/i.test(e.key)) {
-      buffer = (buffer + e.key.toLowerCase()).slice(-5);
-      if (buffer === 'graph') {
-        document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
-        buffer = '';
+  indexEl.querySelectorAll('.index-row').forEach((row) => {
+    const open = () => onOpen(row.dataset.projectId, row);
+    row.addEventListener('click', open);
+    row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open();
       }
-    }
+    });
   });
 }
 
 async function bootstrap() {
   initTheme(document.getElementById('theme-toggle'));
   initNavAndMenus();
-  initEasterEggs();
 
   const [siteRes, projRes] = await Promise.all([
     fetch('./data/site.json'),
@@ -120,113 +110,113 @@ async function bootstrap() {
   const site = await siteRes.json();
   const projects = await projRes.json();
 
-  // Hydrate "now" strip
-  const nowStatusEl = document.getElementById('now-status-text');
-  if (nowStatusEl) nowStatusEl.textContent = `now: ${site.now.status}`;
-  startChennaiClock(document.getElementById('now-clock'), site.now.timeZone);
+  // Hydrate Hero copy
+  const heroEyebrow = document.getElementById('hero-eyebrow');
+  const heroLead = document.getElementById('hero-lead');
+  if (heroEyebrow) heroEyebrow.textContent = site.tagline;
+  if (heroLead) heroLead.textContent = site.heroLead;
 
-  // Hydrate accessible hidden graph node list
-  const srList = document.getElementById('graph-sr-list');
-  if (srList) {
-    srList.innerHTML = projects
-      .map((p) => `<li><a href="#/work/${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a></li>`)
-      .join('');
-  }
-
-  // Hydrate router first so openProject is available
+  // Hydrate Router (Case Files + Art Collection)
   const router = initRouter({
     backdrop: document.getElementById('case-backdrop'),
     panel: document.getElementById('case-panel'),
     bodyEl: document.getElementById('case-body'),
+    topbarLabelEl: document.getElementById('case-topbar-label'),
     closeBtn: document.getElementById('case-close'),
-    projects
+    projects,
+    art: site.art || []
   });
 
-  // Hydrate editorial index table
-  const indexEl = document.getElementById('projects-index');
-  if (indexEl) {
-    indexEl.innerHTML = projects
-      .map((p) => {
-        const preview = p.summary.startsWith('TODO:')
-          ? 'open case file for notes & architecture diagram.'
-          : p.summary;
-        const tags = (p.tags || [])
-          .map((t) => `<span class="tag">${escapeHtml(t.toLowerCase())}</span>`)
-          .join('');
-        return `
-          <article class="index-row" tabindex="0" role="button" data-project-id="${escapeHtml(p.id)}" aria-label="Open case file for ${escapeHtml(p.title)}">
-            <span class="index-num">${escapeHtml(p.index)}</span>
-            <h3 class="index-title">${escapeHtml(p.title)}</h3>
-            <div class="index-tags">${tags}</div>
-            <span class="index-year">${escapeHtml(p.year)}</span>
-            <p class="index-preview">${escapeHtml(preview)}</p>
-          </article>
-        `;
-      })
+  // 01 · Hydrate Experience & Education
+  const expEduGrid = document.getElementById('exp-edu-grid');
+  if (expEduGrid && site.experience?.length && site.education) {
+    const exp = site.experience[0];
+    const edu = site.education;
+    expEduGrid.innerHTML = `
+      <article class="exp-card">
+        <div class="exp-meta">
+          <span class="mono">${escapeHtml(exp.period.toLowerCase())}</span>
+          <span class="mono">${escapeHtml(exp.location.toLowerCase())}</span>
+        </div>
+        <h3 class="exp-title">${escapeHtml(exp.role)}</h3>
+        <p class="exp-org">${escapeHtml(exp.org)}</p>
+        <p class="exp-desc">${escapeHtml(exp.summary)}</p>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-meta">
+          <span class="mono">${escapeHtml(edu.period.toLowerCase())}</span>
+          <span class="mono">${escapeHtml(edu.metric.toLowerCase())}</span>
+        </div>
+        <h3 class="exp-title">${escapeHtml(edu.degree)}</h3>
+        <p class="exp-org">${escapeHtml(edu.institution)}</p>
+        <ul class="exp-list">
+          <li>${escapeHtml(edu.location.toLowerCase())}</li>
+          <li>${escapeHtml(edu.achievement.toLowerCase())}</li>
+        </ul>
+      </article>
+    `;
+  }
+
+  // 02 · Hydrate Personal Projects
+  renderProjectsTable(
+    document.getElementById('projects-index'),
+    projects,
+    (id, el) => router.openProject(id, el)
+  );
+
+  // 03 · Hydrate About & Skills
+  const aboutLead = document.getElementById('about-lead');
+  const aboutBody = document.getElementById('about-body');
+  const aboutSkills = document.getElementById('about-skills');
+  if (aboutLead) aboutLead.textContent = site.about.lead;
+  if (aboutBody) aboutBody.textContent = site.about.body;
+  if (aboutSkills) {
+    aboutSkills.innerHTML = (site.about.skills || [])
+      .map((s) => `<span class="tag">${escapeHtml(s.toLowerCase())}</span>`)
+      .join('');
+  }
+
+  // 04 · Hydrate Art Preview + Explore Collection
+  const artPreviewGrid = document.getElementById('art-preview-grid');
+  const exploreArtBtn = document.getElementById('explore-art-btn');
+  if (artPreviewGrid && Array.isArray(site.art)) {
+    artPreviewGrid.innerHTML = site.art
+      .slice(0, 3)
+      .map(
+        (item) => `
+        <figure class="art-card" tabindex="0" role="button" aria-label="View ${escapeHtml(item.title)} in art collection">
+          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.title)}" loading="lazy" />
+          <figcaption class="art-card-caption">
+            <span class="art-card-title">${escapeHtml(item.title)}</span>
+            <span class="mono">${escapeHtml(item.medium)}</span>
+          </figcaption>
+        </figure>
+      `
+      )
       .join('');
 
-    indexEl.querySelectorAll('.index-row').forEach((row) => {
-      const open = () => router.openProject(row.dataset.projectId, row);
-      row.addEventListener('click', open);
-      row.addEventListener('keydown', (e) => {
+    artPreviewGrid.querySelectorAll('.art-card').forEach((card) => {
+      card.addEventListener('click', () => router.openArtCollection(card));
+      card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          open();
+          router.openArtCollection(card);
         }
       });
     });
   }
 
-  // Hydrate About
-  const aboutLead = document.getElementById('about-lead');
-  const aboutBody = document.getElementById('about-body');
-  const aboutFocus = document.getElementById('about-focus');
-  if (aboutLead) aboutLead.textContent = site.about.lead;
-  if (aboutBody) aboutBody.textContent = site.about.body;
-  if (aboutFocus) {
-    aboutFocus.innerHTML = site.about.focus
-      .map((f) => `<span class="tag">${escapeHtml(f)}</span>`)
-      .join('');
+  if (exploreArtBtn) {
+    exploreArtBtn.addEventListener('click', () => router.openArtCollection(exploreArtBtn));
   }
 
-  // Hydrate Contact
-  const contactPrimary = document.getElementById('contact-primary');
-  const contactNote = document.getElementById('contact-note');
-  const contactSecondary = document.getElementById('contact-secondary');
-  if (contactPrimary) {
-    contactPrimary.href = site.contact.linkedin.url;
-    contactPrimary.textContent = site.contact.linkedin.label;
-  }
-  if (contactNote) contactNote.textContent = site.contact.note;
-  if (contactSecondary) {
-    contactSecondary.innerHTML = `
-      <a class="contact-link" href="${escapeHtml(site.contact.github.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(site.contact.github.label)} ↗</a>
-      <a class="contact-link" href="${escapeHtml(site.contact.email.url)}">${escapeHtml(site.contact.email.label)}</a>
-    `;
-  }
-
-  // Hydrate Footer marginalia
-  const footerMeta = document.getElementById('footer-meta');
-  if (footerMeta) {
-    footerMeta.textContent = `${site.version} · last updated: ${site.buildDate}`;
-  }
-
-  // Initialize Graph & Search
-  initGraph({
-    canvas: document.getElementById('hero-canvas'),
-    tooltip: document.getElementById('hero-tooltip'),
-    projects,
-    concepts: site.concepts,
-    onSelectProject: (id) => router.openProject(id)
-  });
-
-  initSearch({
-    input: document.getElementById('retrieval-input'),
-    chipsEl: document.getElementById('retrieval-chips'),
-    resultsEl: document.getElementById('retrieval-results'),
-    projects,
-    suggestions: site.searchSuggestions
-  });
+  // Initialize Wandering Samurai Duo
+  initSamurai(
+    document.getElementById('samurai-a'),
+    document.getElementById('samurai-b'),
+    document.getElementById('site-footer')
+  );
 
   initReveals();
 }

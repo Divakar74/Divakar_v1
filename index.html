@@ -3,29 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>divakar ramesh — full-stack × applied ai</title>
+    <title>Divakar Ramesh</title>
     <meta
       name="description"
-      content="personal portfolio and knowledge graph of divakar ramesh, a full-stack developer focused on applied ai, rag, knowledge graphs, and graph neural networks."
+      content="Portfolio of Divakar Ramesh — software engineer building scalable full-stack web applications and applied AI systems."
     />
-    <link rel="canonical" href="https://divakar74.github.io/" />
+    <link rel="canonical" href="https://divakar74.github.io/Divakar_v1/" />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="divakar ramesh — full-stack × applied ai" />
+    <meta property="og:title" content="Divakar Ramesh" />
     <meta
       property="og:description"
-      content="knowledge-graph portfolio of divakar ramesh: rag, graph neural networks, and full-stack software."
+      content="Software engineer building scalable full-stack web applications and applied AI systems."
     />
-    <meta property="og:url" content="https://divakar74.github.io/" />
+    <meta property="og:url" content="https://divakar74.github.io/Divakar_v1/" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="divakar ramesh — full-stack × applied ai" />
+    <meta name="twitter:title" content="Divakar Ramesh" />
     <meta
       name="twitter:description"
-      content="knowledge-graph portfolio of divakar ramesh: rag, graph neural networks, and full-stack software."
+      content="Software engineer building scalable full-stack web applications and applied AI systems."
     />
 
     <!-- Fonts -->
@@ -48,8 +48,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Divakar Ramesh",
-        "url": "https://divakar74.github.io/",
-        "jobTitle": "Full-Stack Developer & Applied AI Engineer",
+        "url": "https://divakar74.github.io/Divakar_v1/",
+        "jobTitle": "Software Engineer",
         "sameAs": [
           "https://github.com/Divakar74",
           "https://www.linkedin.com/in/divakar-ramesh/"
@@ -68,47 +68,31 @@
   <body>
     <a class="skip-link" href="#main">skip to content</a>
 
-    <!-- Faint 12-col grid overlay (easter egg: press 'g') -->
-    <div id="grid-overlay" class="grid-overlay" aria-hidden="true">
-      <div class="grid-overlay-inner">
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-        <div class="grid-overlay-col"></div>
-      </div>
-    </div>
-
     <header id="site-nav" class="site-nav">
       <div class="container nav-inner">
-        <a href="#hero" class="nav-brand">
-          <span class="nav-brand-dot" aria-hidden="true"></span>
-          <span>divakar74</span>
+        <a href="#hero" class="nav-home" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5"/>
+            <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/>
+          </svg>
+          <span class="nav-home-dot" aria-hidden="true"></span>
         </a>
 
         <nav class="nav-links" aria-label="Primary navigation">
-          <a class="nav-link" href="#work">work</a>
           <a class="nav-link" href="#about">about</a>
-          <a class="nav-link" href="#contact">contact</a>
+          <a class="nav-link" href="#experience">experience</a>
+          <a class="nav-link" href="#projects">projects</a>
+          <a class="nav-link" href="#art">art</a>
         </nav>
 
         <div class="nav-controls">
           <button
             id="theme-toggle"
-            class="theme-toggle"
+            class="theme-icon-btn"
             type="button"
             aria-pressed="false"
             aria-label="Toggle light and dark theme"
-          >
-            mode: paper
-          </button>
+          ></button>
           <button
             id="menu-toggle"
             class="menu-toggle"
@@ -125,169 +109,302 @@
     <!-- Mobile full-screen overlay menu -->
     <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" hidden>
       <div class="mobile-menu-head">
-        <span class="mono">navigation</span>
-        <button id="mobile-menu-close" class="menu-toggle" type="button">close [esc]</button>
+        <span class="mono">menu</span>
+        <button id="mobile-menu-close" class="icon-btn" type="button" aria-label="Close menu">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
       <nav class="mobile-menu-links" aria-label="Mobile links">
-        <a class="mobile-menu-link" href="#work">work</a>
         <a class="mobile-menu-link" href="#about">about</a>
-        <a class="mobile-menu-link" href="#contact">contact</a>
+        <a class="mobile-menu-link" href="#experience">experience</a>
+        <a class="mobile-menu-link" href="#projects">projects</a>
+        <a class="mobile-menu-link" href="#art">art</a>
       </nav>
       <span class="mono">press esc to close</span>
     </div>
 
     <main id="main">
-      <!-- A. Graph Hero -->
-      <section id="hero" class="hero" aria-label="Knowledge graph hero">
-        <canvas
-          id="hero-canvas"
-          class="hero-canvas"
-          aria-label="Interactive force-directed knowledge graph connecting projects and technical concepts"
-        ></canvas>
-
-        <div class="hero-overlay">
-          <div class="container">
-            <div class="hero-title-wrap">
-              <h1 class="hero-title">divakar <span class="serif-italic">ramesh</span></h1>
-              <p class="hero-subtitle">full-stack × applied ai / chennai</p>
-            </div>
-          </div>
-        </div>
-
-        <span class="hero-marginalia mono">fig. 1: the graph — click any project node</span>
-        <div id="hero-tooltip" class="hero-tooltip" role="status" hidden></div>
-
-        <!-- Keyboard & screen-reader accessible mirror of graph nodes -->
-        <ul id="graph-sr-list" class="sr-only" aria-label="Project nodes in the knowledge graph"></ul>
-      </section>
-
-      <!-- Live Chennai "now" strip -->
-      <aside class="now-strip" aria-label="Current status and local time">
-        <div class="container now-inner">
-          <div class="now-status">
-            <span class="now-dot" aria-hidden="true"></span>
-            <span id="now-status-text" class="mono">now: exploring knowledge-graph rag &amp; graph neural networks</span>
-          </div>
-          <span id="now-clock" class="mono">chennai --:--:-- ist</span>
-        </div>
-      </aside>
-
-      <!-- B. "ask my portfolio" Retrieval Bar -->
-      <section class="container retrieval-section reveal" aria-label="Portfolio retrieval search">
-        <div class="retrieval-box">
-          <label class="sr-only" for="retrieval-input">Ask my portfolio</label>
-          <div class="retrieval-prompt">
-            <span class="retrieval-caret" aria-hidden="true">›</span>
-            <input
-              id="retrieval-input"
-              class="retrieval-input"
-              type="search"
-              autocomplete="off"
-              placeholder="ask me anything: rag, gnn, python…"
-            />
-          </div>
-          <div id="retrieval-chips" class="retrieval-chips"></div>
-          <div id="retrieval-results" class="retrieval-results" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <!-- Work / Projects Index Table -->
-      <section id="work" class="section container" aria-labelledby="work-heading">
-        <div class="section-head reveal">
-          <span class="section-index">01</span>
-          <h2 id="work-heading" class="section-title">selected <span class="serif-italic">work</span></h2>
-        </div>
-
-        <div class="grid-12">
-          <div class="section-marginalia marginalia reveal reveal-delay-1">
-            fig. 2: project index<br />
-            click any row to inspect its case file &amp; edge diagram.
-          </div>
-          <div class="section-body reveal reveal-delay-2">
-            <div id="projects-index" class="index-table"></div>
+      <!-- Editorial Hero -->
+      <section id="hero" class="hero-section" aria-label="Introduction">
+        <div class="container">
+          <p id="hero-eyebrow" class="hero-eyebrow">software engineer · full-stack &amp; applied ai</p>
+          <h1 class="hero-title">Divakar <span class="serif-italic">Ramesh</span></h1>
+          <p id="hero-lead" class="hero-lead">
+            building scalable web applications and applied ai systems, from mern and spring boot backends to rag pipelines, computer vision, and graph neural networks.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#experience">explore work ↓</a>
+            <a class="hero-icon-link" href="https://github.com/Divakar74" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+            </a>
+            <a class="hero-icon-link" href="https://www.linkedin.com/in/divakar-ramesh/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a class="hero-icon-link" href="mailto:divakarramesh2004@gmail.com" aria-label="Send email">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- About -->
+      <!-- 01 · About -->
       <section id="about" class="section container" aria-labelledby="about-heading">
         <div class="section-head reveal">
-          <span class="section-index">02</span>
-          <h2 id="about-heading" class="section-title">about <span class="serif-italic">notes</span></h2>
+          <span class="section-index">01</span>
+          <h2 id="about-heading" class="section-title"><span class="serif-italic">about</span></h2>
         </div>
 
-        <div class="grid-12">
-          <div class="section-marginalia marginalia reveal reveal-delay-1">
-            fig. 3: lab notebook<br />
-            first principles &amp; applied ai.
+        <div class="about-grid reveal reveal-delay-1">
+          <div>
+            <p id="about-lead" class="about-lead"></p>
+            <p id="about-body" class="about-copy"></p>
+            <div id="about-skills" class="about-focus" aria-label="Technical skills"></div>
           </div>
-          <div class="section-body reveal reveal-delay-2">
-            <p id="about-lead" class="about-lead">
-              i like building from the ground up — thinking through the problem, shaping the architecture, and refining the implementation until it makes sense.
-            </p>
-            <p id="about-body" class="about-copy">
-              most of my projects are learning-driven, designed to explore how modern software and intelligent systems behave in practice. my work sits at the intersection of full-stack engineering and applied ai: retrieval-augmented generation, knowledge graphs, and graph neural networks.
-            </p>
-            <div id="about-focus" class="about-focus" aria-label="Core focus areas"></div>
-          </div>
+
+          <figure class="about-photo-wrap">
+            <img
+              id="about-photo"
+              class="about-photo"
+              src="./assets/divakar.jpg"
+              alt="Portrait of Divakar Ramesh"
+              loading="lazy"
+            />
+          </figure>
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="section container" aria-labelledby="contact-heading">
+      <!-- 02 · Experience & Education -->
+      <section id="experience" class="section container" aria-labelledby="exp-heading">
         <div class="section-head reveal">
-          <span class="section-index">03</span>
-          <h2 id="contact-heading" class="section-title">open <span class="serif-italic">channels</span></h2>
+          <span class="section-index">02</span>
+          <h2 id="exp-heading" class="section-title">experience &amp; <span class="serif-italic">education</span></h2>
         </div>
 
-        <div class="grid-12">
-          <div class="section-marginalia marginalia reveal reveal-delay-1">
-            fig. 4: endpoints<br />
-            no forms, just direct links.
-          </div>
-          <div class="section-body reveal reveal-delay-2">
-            <a
-              id="contact-primary"
-              class="contact-primary"
-              href="https://www.linkedin.com/in/divakar-ramesh/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin
-            </a>
-            <p id="contact-note" class="about-copy" style="margin-top: 16px;">
-              always happy to talk about retrieval systems, graph ml, or clean software architecture.
-            </p>
-            <div id="contact-secondary" class="contact-secondary">
-              <a class="contact-link" href="https://github.com/Divakar74" target="_blank" rel="noopener noreferrer">github ↗</a>
-            </div>
-          </div>
+        <div id="exp-edu-grid" class="exp-grid reveal reveal-delay-1"></div>
+      </section>
+
+      <!-- 03 · Personal Projects -->
+      <section id="projects" class="section container" aria-labelledby="projects-heading">
+        <div class="section-head reveal">
+          <span class="section-index">03</span>
+          <h2 id="projects-heading" class="section-title">personal <span class="serif-italic">projects</span></h2>
+        </div>
+
+        <div id="projects-index" class="index-table reveal reveal-delay-1"></div>
+      </section>
+
+      <!-- 04 · Art -->
+      <section id="art" class="section container" aria-labelledby="art-heading">
+        <div class="section-head reveal">
+          <span class="section-index">04</span>
+          <h2 id="art-heading" class="section-title"><span class="serif-italic">art</span></h2>
+        </div>
+
+        <div id="art-preview-grid" class="art-preview-grid reveal reveal-delay-1"></div>
+
+        <div class="art-actions reveal reveal-delay-2">
+          <button id="explore-art-btn" class="btn-ghost" type="button">explore collection →</button>
         </div>
       </section>
 
       <noscript>
         <section class="section container">
-          <p class="mono">javascript is disabled — showing static project links:</p>
+          <p class="mono">personal projects:</p>
           <ul style="margin-top: 16px; display: grid; gap: 8px;">
             <li><a href="https://github.com/Divakar74/PharmaRAG-GNN">PharmaRAG-GNN</a> — explainable hybrid knowledge-graph rag + gnn for drug–drug interaction prediction</li>
             <li><a href="https://github.com/Divakar74/LearnSphere-Smart_Campus_Assisstant">LearnSphere Smart Campus Assistant</a> — ai document processing and student support</li>
-            <li><a href="https://github.com/Divakar74/Agromart">Agromart</a> — crop disease predictor</li>
-            <li><a href="https://github.com/Divakar74/Neuro-RAG">Neuro-RAG</a></li>
-            <li><a href="https://github.com/Divakar74/App-Development-SoulShine">App-Development-SoulShine</a></li>
-            <li><a href="https://github.com/Divakar74/OnlineFlightTicket">OnlineFlightTicket</a></li>
+            <li><a href="https://github.com/Divakar74/Agromart">Agromart</a> — crop disease predictor using ResNet50 (92% accuracy)</li>
+            <li><a href="https://github.com/Divakar74/App-Development-SoulShine">SoulShine</a> — ai-powered mental health monitoring with neural networks &amp; gemini api</li>
+            <li><a href="https://github.com/Divakar74/BreastCancerPred-ML">Breast Cancer Predictor</a> — real-time ml prediction with streamlit ui (85% accuracy)</li>
+            <li><a href="https://github.com/Divakar74/FlightTicketBooking">FlyHigh</a> — online flight ticket booking using reactjs &amp; spring boot</li>
+            <li><a href="https://github.com/Divakar74/Project-EduGo">EduGo</a> — personalized learning platform with ai-based teacher recommendations</li>
           </ul>
         </section>
       </noscript>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <span id="footer-meta" class="mono">v1.0, shipped with unreasonable confidence</span>
-        <span class="mono">hint: press [g] for grid · type "graph" to jump top</span>
+    <!-- Unified Animated 2D Japanese Samurai Landscape Footer -->
+    <footer id="site-footer" class="samurai-footer">
+      <div class="samurai-stage">
+        <svg class="samurai-landscape" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <!-- Celestial sun / moon -->
+          <circle cx="990" cy="52" r="36" fill="var(--land-celestial-glow)" />
+          <circle cx="990" cy="52" r="20" fill="var(--land-celestial)" />
+
+          <!-- Subtle clouds -->
+          <g class="land-cloud" fill="var(--land-hill-far)" opacity="0.55">
+            <path d="M130 44 Q145 32 164 38 Q178 28 196 38 Q210 36 218 44 Z" />
+            <path d="M610 56 Q626 42 648 48 Q664 38 684 48 Q698 46 708 56 Z" />
+          </g>
+
+          <!-- Background Mountain Range (organic curves) -->
+          <path d="M0 176 Q110 112 220 144 Q340 84 470 138 Q610 92 750 142 Q890 88 1030 132 Q1120 104 1200 130 L1200 220 L0 220 Z" fill="var(--land-hill-far)" />
+
+          <!-- Midground Rolling Hills -->
+          <path d="M0 184 Q160 136 330 166 Q520 140 700 168 Q900 142 1080 164 Q1150 154 1200 162 L1200 220 L0 220 Z" fill="var(--land-hill-near)" />
+
+          <!-- Detailed Japanese Castle / Pagoda Silhouette -->
+          <g transform="translate(860, 82)" fill="var(--land-castle)">
+            <!-- Stone foundation (ishigaki) -->
+            <polygon points="8,100 112,100 102,78 18,78" />
+            <!-- Tier 1 -->
+            <rect x="24" y="60" width="72" height="18" />
+            <path d="M10 60 Q60 54 110 60 L102 52 Q60 48 18 52 Z" />
+            <!-- Tier 2 -->
+            <rect x="32" y="38" width="56" height="14" />
+            <path d="M20 38 Q60 32 100 38 L92 30 Q60 27 28 30 Z" />
+            <!-- Tier 3 -->
+            <rect x="42" y="18" width="36" height="12" />
+            <path d="M32 18 Q60 12 88 18 L76 6 Q60 2 44 6 Z" />
+            <rect x="59" y="0" width="2" height="6" />
+            <!-- Warm architectural lantern glow -->
+            <rect x="55" y="65" width="10" height="8" rx="1" fill="var(--land-lantern)" />
+            <rect x="56" y="42" width="8" height="6" rx="1" fill="var(--land-lantern)" />
+          </g>
+
+          <!-- Organic Pine & Foliage Clusters -->
+          <g fill="var(--land-tree)">
+            <!-- Left pine grove -->
+            <path d="M44 186 Q62 128 84 186 Z" />
+            <ellipse cx="64" cy="148" rx="22" ry="12" />
+            <ellipse cx="52" cy="158" rx="16" ry="9" />
+            <ellipse cx="102" cy="166" rx="18" ry="11" />
+            <!-- Midground foliage -->
+            <ellipse cx="420" cy="168" rx="20" ry="11" />
+            <ellipse cx="436" cy="172" rx="14" ry="8" />
+            <!-- Right pine grove -->
+            <ellipse cx="1084" cy="156" rx="24" ry="14" />
+            <ellipse cx="1108" cy="164" rx="18" ry="11" />
+            <ellipse cx="1142" cy="170" rx="20" ry="10" />
+          </g>
+
+          <!-- Stone Lantern (Tōrō) -->
+          <g transform="translate(210, 152)" fill="var(--land-rock)">
+            <rect x="7" y="14" width="6" height="20" />
+            <rect x="3" y="32" width="14" height="4" rx="1" />
+            <rect x="4" y="8" width="12" height="6" />
+            <polygon points="0,8 20,8 10,1" />
+            <circle cx="10" cy="11" r="2.2" fill="var(--land-lantern)" />
+          </g>
+
+          <!-- Grass Ground & Natural Winding Pathway -->
+          <rect x="0" y="182" width="1200" height="38" fill="var(--land-grass)" />
+          <path d="M0 191 Q300 186 600 192 Q900 197 1200 190 L1200 202 Q900 207 600 202 Q300 197 0 202 Z" fill="var(--land-path)" />
+          <rect x="0" y="204" width="1200" height="16" fill="var(--land-grass-deep)" />
+
+          <!-- Small Stones & Rocks -->
+          <g fill="var(--land-rock)">
+            <ellipse cx="145" cy="189" rx="9" ry="3.5" />
+            <ellipse cx="158" cy="190" rx="5" ry="2.2" />
+            <ellipse cx="475" cy="188" rx="8" ry="3" />
+            <ellipse cx="745" cy="189" rx="10" ry="3.5" />
+            <ellipse cx="1025" cy="188" rx="7" ry="2.8" />
+          </g>
+
+          <!-- Varying-Height Grass Tufts -->
+          <g class="land-grass-sway" stroke="var(--land-grass-deep)" stroke-width="1.8" stroke-linecap="round">
+            <path d="M28 184 Q30 173 33 169 M35 184 Q36 176 38 172" />
+            <path d="M180 184 Q182 175 184 171 M187 184 Q188 177 190 174" />
+            <path d="M350 184 Q352 173 355 168 M358 184 Q359 176 361 172" />
+            <path d="M560 184 Q562 174 565 170 M568 184 Q569 177 571 173" />
+            <path d="M790 184 Q792 173 795 169 M798 184 Q799 176 801 173" />
+            <path d="M1050 184 Q1052 174 1055 170 M1058 184 Q1059 177 1061 174" />
+          </g>
+        </svg>
+
+        <!-- Friendly 2D Wandering Samurai Duo -->
+        <div id="samurai-a" class="samurai-actor is-walking" aria-hidden="true">
+          <span class="samurai-hi">hi!</span>
+          <svg class="samurai-svg" viewBox="0 0 64 64">
+            <g class="samurai-leg-l">
+              <path d="M27 40 L24 55 L29 55 L31 41 Z" fill="#1E293B" />
+              <ellipse cx="26" cy="56" rx="3.2" ry="1.8" fill="#475569" />
+            </g>
+            <g class="samurai-leg-r">
+              <path d="M33 40 L35 55 L40 55 L37 40 Z" fill="#0F172A" />
+              <ellipse cx="38" cy="56" rx="3.2" ry="1.8" fill="#475569" />
+            </g>
+            <g class="samurai-upper">
+              <g class="samurai-arm-l">
+                <path d="M23 26 L18 37 L22 38 L26 28 Z" fill="#1D4ED8" />
+                <circle cx="20" cy="38" r="2.2" fill="#E5C19B" />
+              </g>
+              <path d="M23 25 L41 25 L43 41 L21 41 Z" fill="#2563EB" />
+              <path d="M28 25 L32 32 L36 25" fill="none" stroke="#93C5FD" stroke-width="1.3" />
+              <rect x="22" y="34" width="20" height="3" fill="#1E3A8A" />
+              <circle cx="32" cy="19" r="5.5" fill="#E5C19B" />
+              <circle cx="30.2" cy="18.8" r="0.85" fill="#16150F" />
+              <circle cx="34.2" cy="18.8" r="0.85" fill="#16150F" />
+              <path d="M30.5 21.4 Q32.2 22.8 34 21.4" fill="none" stroke="#8C5A3C" stroke-width="1" stroke-linecap="round" />
+              <path d="M16 16 L32 6 L48 16 Q32 18.5 16 16 Z" fill="#D4A857" stroke="#8C6A2B" stroke-width="1" />
+              <path d="M23 13 L41 13" stroke="#8C6A2B" stroke-width="0.7" opacity="0.6" />
+              <g class="samurai-arm-r">
+                <path d="M38 26 L44 36 L40 38 L35 28 Z" fill="#3B82F6" />
+                <circle cx="42" cy="37" r="2.3" fill="#E5C19B" />
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div id="samurai-b" class="samurai-actor samurai-actor--flipped is-walking" aria-hidden="true">
+          <span class="samurai-hi">and 2am stack traces</span>
+          <svg class="samurai-svg" viewBox="0 0 64 64">
+            <g class="samurai-leg-l">
+              <path d="M27 40 L24 55 L29 55 L31 41 Z" fill="#292524" />
+              <ellipse cx="26" cy="56" rx="3.2" ry="1.8" fill="#57534E" />
+            </g>
+            <g class="samurai-leg-r">
+              <path d="M33 40 L35 55 L40 55 L37 40 Z" fill="#1C1917" />
+              <ellipse cx="38" cy="56" rx="3.2" ry="1.8" fill="#57534E" />
+            </g>
+            <g class="samurai-upper">
+              <g class="samurai-arm-l">
+                <path d="M23 26 L18 37 L22 38 L26 28 Z" fill="#3F6212" />
+                <circle cx="20" cy="38" r="2.2" fill="#E5C19B" />
+              </g>
+              <path d="M23 25 L41 25 L43 41 L21 41 Z" fill="#4D7C0F" />
+              <path d="M28 25 L32 32 L36 25" fill="none" stroke="#BEF264" stroke-width="1.2" />
+              <rect x="22" y="34" width="20" height="3" fill="#365314" />
+              <circle cx="32" cy="19" r="5.5" fill="#E5C19B" />
+              <circle cx="30.2" cy="18.8" r="0.85" fill="#16150F" />
+              <circle cx="34.2" cy="18.8" r="0.85" fill="#16150F" />
+              <path d="M30.5 21.4 Q32.2 22.8 34 21.4" fill="none" stroke="#8C5A3C" stroke-width="1" stroke-linecap="round" />
+              <path d="M16 16 L32 7 L48 16 Q32 18.5 16 16 Z" fill="#A8824A" stroke="#6B4F28" stroke-width="1" />
+              <g class="samurai-arm-r">
+                <path d="M38 26 L44 36 L40 38 L35 28 Z" fill="#65A30D" />
+                <circle cx="42" cy="37" r="2.3" fill="#E5C19B" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Single Unified Footer Row -->
+      <div class="footer-bar">
+        <div class="container footer-unified">
+          <a href="https://github.com/Divakar74" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <span class="footer-copy">© 2026 Divakar Ramesh</span>
+          <div class="footer-right-links">
+            <a href="https://www.linkedin.com/in/divakar-ramesh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:divakarramesh2004@gmail.com">Email</a>
+          </div>
+        </div>
       </div>
     </footer>
 
-    <!-- Case File Slide-Over Panel -->
+    <!-- Case File & Art Collection Slide-Over Panel -->
     <div id="case-backdrop" class="case-backdrop" hidden>
       <aside
         id="case-panel"
@@ -297,8 +414,12 @@
         aria-labelledby="case-title"
       >
         <div class="case-topbar">
-          <span class="mono">case file // retrieval record</span>
-          <button id="case-close" class="case-close" type="button">close [esc]</button>
+          <span id="case-topbar-label" class="mono">case file</span>
+          <button id="case-close" class="icon-btn" type="button" aria-label="Close">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
         <div id="case-body"></div>
       </aside>

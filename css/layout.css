@@ -26,7 +26,7 @@
   display: flex;
   align-items: baseline;
   gap: var(--space-2);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .section-index {
@@ -53,64 +53,6 @@
   border-bottom: 1px dotted var(--line);
   transform: translateY(-0.25em);
   min-width: 24px;
-}
-
-/* Desktop marginalia */
-.marginalia {
-  font-family: var(--font-mono);
-  font-size: var(--text-mono);
-  letter-spacing: 0.02em;
-  color: var(--muted);
-}
-
-.section-marginalia {
-  grid-column: 1 / span 3;
-  padding-top: var(--space-1);
-}
-
-.section-body {
-  grid-column: 4 / span 9;
-}
-
-/* Faint 12-column grid easter egg (toggle with 'g') */
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 850;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--dur-fast) ease;
-}
-
-.grid-overlay.is-active {
-  opacity: 1;
-}
-
-.grid-overlay-inner {
-  height: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--space-3);
-}
-
-.grid-overlay-col {
-  border-inline: 1px solid var(--accent);
-  opacity: 0.1;
-  height: 100%;
-}
-
-@media (max-width: 900px) {
-  .section-marginalia {
-    grid-column: 1 / -1;
-    margin-bottom: var(--space-2);
-  }
-
-  .section-body {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 640px) {
