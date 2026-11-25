@@ -1,0 +1,116 @@
+[
+  {
+    "id": "pharmarag-gnn",
+    "index": "01",
+    "title": "PharmaRAG-GNN",
+    "year": "2025",
+    "status": "active research",
+    "role": "TODO: your role (e.g. author / ml engineer)",
+    "summary": "explainable hybrid framework integrating knowledge-graph retrieval-augmented generation (rag) with graph neural networks (gnns) to predict drug–drug interactions (ddis).",
+    "tags": ["Python", "RAG", "GNN", "Knowledge Graph"],
+    "concepts": ["Python", "RAG", "GNN", "Knowledge Graph", "Drug-Drug Interaction"],
+    "repo": "https://github.com/Divakar74/PharmaRAG-GNN",
+    "demo": null,
+    "caseFile": {
+      "problem": "predicting drug–drug interactions (ddis) is critical for clinical safety, yet pure black-box neural models struggle to explain why two compounds interact, while standalone retrieval systems miss structural patterns across pharmacological graphs.",
+      "approach": "combined structured pharmacological knowledge graphs with retrieval-augmented generation and graph neural network message passing. the graph encoder captures molecular and relational topology, while graph-grounded rag retrieves supporting interaction pathways and context.",
+      "architecture": "a dual-pathway pipeline: structured pharmacological triples feed both a gnn interaction predictor and a knowledge-graph retriever, merging structural embeddings with retrieved evidence for explainable ddi predictions.",
+      "learned": "grounding neural predictions in an explicit knowledge graph makes model outputs inspectable rather than opaque, and cleanly separating retrieval from graph inference keeps the system modular."
+    }
+  },
+  {
+    "id": "learnsphere-smart-campus",
+    "index": "02",
+    "title": "LearnSphere Smart Campus Assistant",
+    "year": "2025",
+    "status": "shipped",
+    "role": "TODO: your role (e.g. full-stack & ai developer)",
+    "summary": "ai-powered smart campus assistant for fast document processing, organization, and personalized student support.",
+    "tags": ["Python", "RAG", "Flask", "Education"],
+    "concepts": ["Python", "RAG", "Flask", "Education"],
+    "repo": "https://github.com/Divakar74/LearnSphere-Smart_Campus_Assisstant",
+    "demo": null,
+    "caseFile": {
+      "problem": "TODO: describe the campus document overload and student support bottleneck this project solves.",
+      "approach": "TODO: explain how document ingestion, chunking, and personalized retrieval were structured for student workflows.",
+      "architecture": "python backend connecting document processing pipelines and retrieval-augmented generation to serve context-aware student queries.",
+      "learned": "TODO: note key takeaways from building document-centric ai workflows for real users."
+    }
+  },
+  {
+    "id": "agromart",
+    "index": "03",
+    "title": "Agromart",
+    "year": "2024",
+    "status": "shipped",
+    "role": "TODO: your role (e.g. full-stack & ml developer)",
+    "summary": "crop disease predictor connecting deep-learning leaf diagnostics with an accessible web interface.",
+    "tags": ["JavaScript", "Python", "Agriculture"],
+    "concepts": ["JavaScript", "Python", "Agriculture"],
+    "repo": "https://github.com/Divakar74/Agromart",
+    "demo": null,
+    "caseFile": {
+      "problem": "TODO: describe the challenge of early crop disease detection for farmers and growers.",
+      "approach": "TODO: detail how image classification and web delivery were paired to make crop diagnostics fast.",
+      "architecture": "javascript client interface paired with a python inference layer tailored for agricultural disease classification.",
+      "learned": "TODO: share what you learned about bridging ml inference with a lightweight frontend."
+    }
+  },
+  {
+    "id": "neuro-rag",
+    "index": "04",
+    "title": "Neuro-RAG",
+    "year": "2025",
+    "status": "experimental",
+    "role": "TODO: your role",
+    "summary": "TODO: add a concise one-line description of Neuro-RAG from your notes.",
+    "tags": ["Java", "RAG", "Knowledge Graph"],
+    "concepts": ["Java", "RAG", "Knowledge Graph"],
+    "repo": "https://github.com/Divakar74/Neuro-RAG",
+    "demo": null,
+    "caseFile": {
+      "problem": "TODO: describe the retrieval or reasoning problem Neuro-RAG explores.",
+      "approach": "TODO: explain the java-based retrieval and knowledge-structuring approach.",
+      "architecture": "java core implementing structured retrieval workflows and knowledge-graph traversal.",
+      "learned": "TODO: summarize what building a retrieval system in java taught you."
+    }
+  },
+  {
+    "id": "soulshine",
+    "index": "05",
+    "title": "App-Development-SoulShine",
+    "year": "2024",
+    "status": "shipped",
+    "role": "TODO: your role",
+    "summary": "TODO: add a concise one-line description of SoulShine (e.g. mobile/web wellness & emotion monitoring app).",
+    "tags": ["JavaScript", "Mobile"],
+    "concepts": ["JavaScript", "Mobile"],
+    "repo": "https://github.com/Divakar74/App-Development-SoulShine",
+    "demo": null,
+    "caseFile": {
+      "problem": "TODO: describe the user problem SoulShine addresses.",
+      "approach": "TODO: outline the mobile-first interface and any ai/emotion analysis pipeline used.",
+      "architecture": "javascript mobile application architecture focused on responsive user check-ins and feedback.",
+      "learned": "TODO: document lessons from designing a calm, supportive mobile experience."
+    }
+  },
+  {
+    "id": "online-flight-ticket",
+    "index": "06",
+    "title": "OnlineFlightTicket",
+    "year": "2024",
+    "status": "shipped",
+    "role": "TODO: your role",
+    "summary": "TODO: add a concise one-line description of OnlineFlightTicket.",
+    "tags": ["Java", "SQL", "JavaScript"],
+    "concepts": ["Java", "SQL", "JavaScript"],
+    "repo": "https://github.com/Divakar74/OnlineFlightTicket",
+    "demo": null,
+    "caseFile": {
+      "problem": "TODO: describe the booking, seat-availability, or transaction workflow problem.",
+      "approach": "TODO: explain how java backend logic, relational sql persistence, and frontend booking flows were structured.",
+      "architecture": "relational sql data layer backed by java services and a javascript booking interface.",
+      "learned": "TODO: note key lessons on transactional data integrity and booking state management."
+    }
+  }
+]

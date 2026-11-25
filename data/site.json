@@ -1,0 +1,61 @@
+{
+  "name": "divakar ramesh",
+  "handle": "Divakar74",
+  "tagline": "full-stack × applied ai / chennai",
+  "title": "divakar ramesh — full-stack × applied ai",
+  "description": "personal portfolio & knowledge graph of divakar ramesh, a full-stack developer focused on applied ai, rag, knowledge graphs, and graph neural networks.",
+  "url": "https://divakar74.github.io",
+  "buildDate": "2026-11-25",
+  "version": "v1.0, shipped with unreasonable confidence",
+  "now": {
+    "status": "exploring knowledge-graph rag & graph neural networks",
+    "location": "chennai, ist",
+    "timeZone": "Asia/Kolkata"
+  },
+  "about": {
+    "lead": "i like building from the ground up — thinking through the problem, shaping the architecture, and refining the implementation until it makes sense.",
+    "body": "most of my projects are learning-driven, designed to explore how modern software and intelligent systems behave in practice. my work sits at the intersection of full-stack engineering and applied ai: retrieval-augmented generation, knowledge graphs, and graph neural networks. i care about clear structure, explainable systems, and interfaces that stay out of the way.",
+    "focus": [
+      "knowledge-graph rag",
+      "graph neural networks",
+      "full-stack web systems",
+      "applied machine learning"
+    ]
+  },
+  "concepts": [
+    "Python",
+    "Java",
+    "JavaScript",
+    "RAG",
+    "GNN",
+    "Knowledge Graph",
+    "Flask",
+    "SQL",
+    "Drug-Drug Interaction",
+    "Agriculture",
+    "Education",
+    "Mobile"
+  ],
+  "searchSuggestions": [
+    "rag",
+    "graph",
+    "python"
+  ],
+  "contact": {
+    "heading": "let's connect",
+    "note": "always happy to talk about retrieval systems, graph ml, or clean software architecture.",
+    "linkedin": {
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/divakar-ramesh/"
+    },
+    "github": {
+      "label": "github",
+      "url": "https://github.com/Divakar74"
+    },
+    "email": {
+      "label": "TODO: add preferred email",
+      "url": "mailto:TODO@example.com",
+      "todo": true
+    }
+  }
+}
